@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技能五子棋</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 模式选择界面 -->
+    <div id="mode-select" class="screen active">
+        <div class="select-container">
+            <h1 class="game-title">技能五子棋</h1>
+            <p class="subtitle">选择游戏模式</p>
+            <div class="mode-buttons">
+                <button id="ai-mode-btn" class="mode-button">
+                    <h2>人机对战</h2>
+                    <p>与电脑AI对战</p>
+                </button>
+                <button id="pvp-mode-btn" class="mode-button">
+                    <h2>双人对战</h2>
+                    <p>与好友对战</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 角色选择界面 -->
+    <div id="character-select" class="screen">
+        <div class="select-container">
+            <h1 class="game-title">技能五子棋</h1>
+            <p class="subtitle" id="select-subtitle">选择你的角色</p>
+            <div class="character-grid">
+                <div class="character-card" data-character="zhangcheng">
+                    <div class="character-portrait">
+                        <img src="assets/characters/portraits/zhangcheng.png" alt="张呈">
+                    </div>
+                    <h3 class="character-name">张呈</h3>
+                </div>
+                <div class="character-card" data-character="jineunwu">
+                    <div class="character-portrait">
+                        <img src="assets/characters/portraits/jineunwu.png" alt="技能五">
+                    </div>
+                    <h3 class="character-name">技能五</h3>
+                </div>
+                <div class="character-card" data-character="ziqi">
+                    <div class="character-portrait">
+                        <img src="assets/characters/portraits/ziqi.png" alt="子棋">
+                    </div>
+                    <h3 class="character-name">子棋</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏主界面 -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- 顶部信息栏 -->
+            <div class="game-header">
+                <div class="player-info player-info-left">
+                    <img id="opponent-avatar" class="avatar" src="" alt="对手">
+                    <div class="player-details">
+                        <span id="opponent-name" class="player-name"></span>
+                        <span id="opponent-color" class="player-color"></span>
+                    </div>
+                </div>
+                <div class="turn-indicator">
+                    <span id="current-turn"></span>
+                </div>
+                <div class="player-info player-info-right">
+                    <div class="player-details">
+                        <span id="player-name" class="player-name"></span>
+                        <span id="player-color" class="player-color"></span>
+                    </div>
+                    <img id="player-avatar" class="avatar" src="" alt="玩家">
+                </div>
+            </div>
+
+            <!-- 游戏主体区域 -->
+            <div class="game-main">
+                <!-- 对手技能栏 -->
+                <div class="skills-container skills-opponent">
+                    <h3>对手技能</h3>
+                    <div id="opponent-skills-list" class="skills-list"></div>
+                </div>
+
+                <!-- 棋盘区域 -->
+                <div class="board-container">
+                    <canvas id="board" width="600" height="600"></canvas>
+                </div>
+
+                <!-- 我方技能栏 -->
+                <div class="skills-container skills-player">
+                    <h3>我的技能</h3>
+                    <div id="skills-list" class="skills-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 技能描述弹窗 -->
+    <div id="skill-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="skill-modal-title"></h2>
+            <p id="skill-modal-description"></p>
+            <button id="skill-modal-close" class="btn">确定</button>
+        </div>
+    </div>
+
+    <!-- 图片展示弹窗 -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content image-modal-content">
+            <h2 id="image-modal-title"></h2>
+            <img id="image-modal-img" src="" alt="技能图片">
+            <button id="image-modal-close" class="btn">确定</button>
+        </div>
+    </div>
+
+    <!-- 游戏结算界面 -->
+    <div id="result-screen" class="screen">
+        <div class="result-container">
+            <h1 id="result-title"></h1>
+            <div id="winner-portrait" class="winner-portrait"></div>
+            <button id="restart-btn" class="btn btn-large">再来一局</button>
+        </div>
+    </div>
+
+    <!-- 音效 -->
+    <audio id="character-hover-audio" src="assets/audio/character-hover.wav"></audio>
+    <audio id="place-piece-audio" src="assets/audio/place-piece.wav"></audio>
+    <audio id="skill-activate-audio" src="assets/audio/skill-activate.wav"></audio>
+    <audio id="victory-sound-audio" src="assets/audio/victory-sound.wav"></audio>
+    <audio id="victory-music-audio" src="assets/audio/victory.WAV"></audio>
+    
+    <!-- 技能语音 -->
+    <audio id="gun-audio" src="assets/audio/gun.wav"></audio>
+    <audio id="chusheng-audio" src="assets/audio/ni-zhe-ge-chusheng.wav"></audio>
+    <audio id="ma-laoren-audio" src="assets/audio/ni-ma-laoren.wav"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
